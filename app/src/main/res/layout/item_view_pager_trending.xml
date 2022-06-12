@@ -54,22 +54,35 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/teal_200"
+            android:background="#D6000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@id/textTitle"/>
 
+        <ImageView
+            android:layout_width="18sp"
+            android:layout_height="18sp"
+            android:id="@+id/imageLocation"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_baseline_my_location_24"
+            app:tint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@id/textLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textLocation"/>
 
         <TextView
-            android:id="@+id/textLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="248dp"
+            android:id="@+id/textLocation"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="8dp"
-            android:text="AAAAAAAAAAAAAAA"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageLocation"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -77,13 +90,12 @@
             android:id="@+id/textTitle"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="20dp"
             android:paddingTop="4dp"
             android:textColor="#FFFFFF"
             android:textSize="19sp"
             android:textStyle="bold"
-            android:text="BBBBBBBBBBBBBBB"
-            app:layout_constraintBottom_toTopOf="@id/textLocation"/>
+            app:layout_constraintBottom_toTopOf="@id/imageLocation"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
