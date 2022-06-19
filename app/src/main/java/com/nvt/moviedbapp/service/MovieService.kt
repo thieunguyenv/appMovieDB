@@ -1,10 +1,11 @@
 package com.nvt.moviedbapp.service
 
+
 import com.google.gson.GsonBuilder
-import com.nvt.moviedbapp.utils.Commons
 import com.nvt.moviedbapp.utils.Commons.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -25,7 +26,10 @@ object MovieService {
                 val url = origin.url.newBuilder()
                     .addQueryParameter("api_key", BASE_URL)
                     .build()
-                return@Interceptor chain.proceed(origin)
+                val requestBuilder : Request.Builder = origin.newBuilder()
+                    .url(url)
+                val request : Request = requestBuilder.build()
+                return@Interceptor chain.proceed(request)
             })
             .addInterceptor(logging)
             .connectTimeout(15, TimeUnit.SECONDS)
@@ -36,13 +40,13 @@ object MovieService {
 
     private fun retrofitMovie(client : OkHttpClient) : Retrofit{
         return Retrofit.Builder()
-            .baseUrl(Commons.BASE_URL)
+            .baseUrl(BASE_URL)
             .client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gSon))
             .build()
     }
-    fun prividerMvDB():ApIService{
+    fun providerMvDB():ApIService{
         return retrofitMovie(providerOkhttpClient(providerLoggingInterceptor())).create(ApIService::class.java)
     }
 

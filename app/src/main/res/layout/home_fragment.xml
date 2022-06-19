@@ -12,9 +12,10 @@
             android:id="@+id/item_view_pager_trending"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/margin_top_bottom_5dp"
             android:paddingStart="40dp"
-            android:paddingEnd="40dp"></androidx.viewpager2.widget.ViewPager2>
+            android:paddingEnd="40dp">
+        </androidx.viewpager2.widget.ViewPager2>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

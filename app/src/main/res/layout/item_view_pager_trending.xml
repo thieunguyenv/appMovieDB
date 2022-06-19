@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="5dp">
+    android:layout_margin="@dimen/margin_5dp"
+    app:cardCornerRadius="@dimen/corer_radius_20dp"
+    app:cardElevation="@dimen/elevation_5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         <com.flaviofaria.kenburnsview.KenBurnsView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/kbvLocation"/>
+            android:id="@+id/img_view_pager"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -56,46 +56,20 @@
             android:layout_height="0dp"
             android:background="#D6000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textTitle"/>
-
-        <ImageView
-            android:layout_width="18sp"
-            android:layout_height="18sp"
-            android:id="@+id/imageLocation"
-            android:layout_marginStart="20dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_baseline_my_location_24"
-            app:tint="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@id/textLocation"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textLocation"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textLocation"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageLocation"/>
+            app:layout_constraintTop_toTopOf="@id/txt_name_mv_vpager"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textTitle"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="20dp"
-            android:paddingTop="4dp"
+            android:id="@+id/txt_name_mv_vpager"
+            android:layout_marginStart="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_left_right_2dp"
+            android:layout_marginEnd="@dimen/margin_20dp"
+            android:paddingTop="@dimen/padding_4dp"
             android:textColor="#FFFFFF"
-            android:textSize="19sp"
+            android:textSize="@dimen/txt_size_19sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/imageLocation"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

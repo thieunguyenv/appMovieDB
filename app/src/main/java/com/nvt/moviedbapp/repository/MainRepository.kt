@@ -4,5 +4,8 @@ import com.nvt.moviedbapp.service.MovieService
 import com.nvt.moviedbapp.utils.Commons
 
 class MainRepository {
-    fun getGenresnname() = MovieService.prividerMvDB().getALlGenre(Commons.API_KEY)
+
+    fun getATrending() = MovieService.providerMvDB().getAllTrendingByDay(Commons.API_KEY)
+    fun getGenresnname() = MovieService.providerMvDB().getALlGenre(Commons.API_KEY)
+
 }
