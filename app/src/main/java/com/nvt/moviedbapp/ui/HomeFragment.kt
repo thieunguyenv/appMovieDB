@@ -17,14 +17,14 @@ import com.nvt.moviedbapp.ui.model.TravelLocation
 
 class HomeFragment : Fragment() {
 
-    private lateinit var _bindingHomeF : HomeFragmentBinding
+    private lateinit var _bindingHomeF: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _bindingHomeF = HomeFragmentBinding.inflate(inflater,container,false)
+        _bindingHomeF = HomeFragmentBinding.inflate(inflater, container, false)
         val viewHomeF = _bindingHomeF.root
 
         loadFakeListData()
@@ -92,12 +92,18 @@ class HomeFragment : Fragment() {
         travelLocationSe.startRating = 4.8f
         travelLocations.add(travelLocationSe)
 
-        _bindingHomeF.itemViewPagerTrending.setAdapter(TravelLocationAdapter(requireContext(),travelLocations))
+        _bindingHomeF.itemViewPagerTrending.setAdapter(
+            TravelLocationAdapter(
+                requireContext(),
+                travelLocations
+            )
+        )
 
         _bindingHomeF.itemViewPagerTrending.setClipToPadding(false)
         _bindingHomeF.itemViewPagerTrending.setClipChildren(false)
         _bindingHomeF.itemViewPagerTrending.setOffscreenPageLimit(3)
-        _bindingHomeF.itemViewPagerTrending.getChildAt(0)?.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER)
+        _bindingHomeF.itemViewPagerTrending.getChildAt(0)
+            ?.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER)
 
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer(40))

@@ -2,15 +2,12 @@ package com.nvt.moviedbapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.flaviofaria.kenburnsview.KenBurnsView
-import com.nvt.moviedbapp.R
 import com.nvt.moviedbapp.databinding.ItemViewPagerTrendingBinding
 import com.nvt.moviedbapp.ui.model.TravelLocation
 import com.squareup.picasso.Picasso
+
 
 class TravelLocationAdapter : RecyclerView.Adapter<TravelLocationAdapter.TravelLocationViewHolder> {
 
@@ -22,7 +19,7 @@ class TravelLocationAdapter : RecyclerView.Adapter<TravelLocationAdapter.TravelL
         this.travellocation = travelLocation
     }
 
-    inner class TravelLocationViewHolder(private val itemBinding: ItemViewPagerTrendingBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class TravelLocationViewHolder(private val itemBinding:ItemViewPagerTrendingBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
 //        internal var kbvLocation: KenBurnsView
 //        internal var textTitle: TextView
@@ -41,7 +38,7 @@ class TravelLocationAdapter : RecyclerView.Adapter<TravelLocationAdapter.TravelL
 //            textTitle!!.text = travelLocation.title
 //            textLocation.setText(travelLocation.location)
 //            textStartRating.setText(travelLocation.startRating.toString())
-            itemBinding.textTitle!!.text = travelLocation.title
+            itemBinding.textTitle.text = travelLocation.title
             itemBinding.textLocation.setText(travelLocation.location)
             itemBinding.textStartRating.setText(travelLocation.startRating.toString())
         }
@@ -58,7 +55,7 @@ class TravelLocationAdapter : RecyclerView.Adapter<TravelLocationAdapter.TravelL
 //        val itemView = LayoutInflater.from(context).inflate(R.layout.item_view_pager, parent, false)
 //        return TravelLocationViewHolder(itemView)
         val itemView =
-            ItemViewPagerTrendingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+           ItemViewPagerTrendingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TravelLocationViewHolder(itemView)
     }
 
