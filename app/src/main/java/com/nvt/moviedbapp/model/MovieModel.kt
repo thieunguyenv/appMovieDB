@@ -3,7 +3,7 @@ package com.nvt.moviedbapp.model
 
 import com.google.gson.annotations.SerializedName
 
-class MoviesModel(
+data class MovieModel(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")

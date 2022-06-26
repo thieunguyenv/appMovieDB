@@ -7,20 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.nvt.moviedbapp.adapter.GroupGenMvTitleAdapter
 import com.nvt.moviedbapp.adapter.TrendingViewPagerAdapter
 import com.nvt.moviedbapp.databinding.HomeFragmentBinding
+import com.nvt.moviedbapp.model.MovieModelDetail
 import com.nvt.moviedbapp.repository.MainRepository
 import com.nvt.moviedbapp.repository.vmfactory.MainVMFactory
 import com.nvt.moviedbapp.viewmodel.FragmentHomeViewModel
 
+
 class HomeFragment : Fragment() {
 
     private lateinit var _bindingHomeF: HomeFragmentBinding
-    private lateinit var fHomeViewModel : FragmentHomeViewModel
-    private lateinit var adapterPaging : TrendingViewPagerAdapter
+    private lateinit var fHomeViewModel: FragmentHomeViewModel
+    private lateinit var adapterPaging: TrendingViewPagerAdapter
+    private lateinit var groupGenMvTitleAdapter: GroupGenMvTitleAdapter
+    private lateinit var listMovieGroup: HashMap<String, List<MovieModelDetail>>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,25 +35,50 @@ class HomeFragment : Fragment() {
     ): View? {
         _bindingHomeF = HomeFragmentBinding.inflate(inflater, container, false)
         val viewHomeF = _bindingHomeF.root
+
         val factory = MainVMFactory(MainRepository)
-        fHomeViewModel = ViewModelProvider(requireActivity(),factory)
+        fHomeViewModel = ViewModelProvider(requireActivity(), factory)
             .get(FragmentHomeViewModel::class.java)
 
 //        loadFakeListData()
         getTrendingList()
         loadFakeListData()
+
+        getGroupItemView()
         return viewHomeF
     }
 
+    private fun getGroupItemView() {
+
+
+        fHomeViewModel.checkMvByGenredID()
+
+        fHomeViewModel.listMovies.observe(viewLifecycleOwner) {
+            groupGenMvTitleAdapter = GroupGenMvTitleAdapter(requireContext(),it)
+            Log.d("GROUP", it.toString())
+            var layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,
+                false)
+            _bindingHomeF.groupMvWithGenreName.layoutManager = layoutManager
+            _bindingHomeF.groupMvWithGenreName.adapter = groupGenMvTitleAdapter
+            groupGenMvTitleAdapter = GroupGenMvTitleAdapter(requireContext(), it)
+            groupGenMvTitleAdapter.setData(it)
+
+        }
+
+
+
+    }
+
     private fun getTrendingList() {
+        adapterPaging = TrendingViewPagerAdapter(requireContext(), listOf())
+        _bindingHomeF.itemViewPagerTrending.adapter = adapterPaging
 
         fHomeViewModel.checkATrendingVpager()
         fHomeViewModel.listTrending.observe(viewLifecycleOwner) {
             adapterPaging.setData(it)
-            Log.d("list",it.toString())
+            Log.d("list", it.toString())
         }
-        adapterPaging = TrendingViewPagerAdapter(requireContext(), listOf())
-        _bindingHomeF.itemViewPagerTrending.adapter = adapterPaging
+
     }
 
     private fun loadFakeListData() {
