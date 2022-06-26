@@ -2,6 +2,7 @@ package com.nvt.moviedbapp.service
 
 
 import com.google.gson.GsonBuilder
+import com.nvt.moviedbapp.utils.Commons.API_KEY
 import com.nvt.moviedbapp.utils.Commons.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -24,7 +25,7 @@ object MovieService {
                 chain ->
                 var origin = chain.request()
                 val url = origin.url.newBuilder()
-                    .addQueryParameter("api_key", BASE_URL)
+                    .addQueryParameter("api_key", API_KEY)
                     .build()
                 val requestBuilder : Request.Builder = origin.newBuilder()
                     .url(url)

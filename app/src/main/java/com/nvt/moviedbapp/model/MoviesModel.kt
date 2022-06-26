@@ -1,13 +1,13 @@
-package com.nvt.moviedbapp.ui.model
+package com.nvt.moviedbapp.model
 
 
 import com.google.gson.annotations.SerializedName
 
-class GenresMovie(
+class MoviesModel(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<GenreMvDetail>,
+    val results: List<MovieModelDetail>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")

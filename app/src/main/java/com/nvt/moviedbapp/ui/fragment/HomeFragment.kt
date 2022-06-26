@@ -1,23 +1,26 @@
-package com.nvt.moviedbapp.ui
+package com.nvt.moviedbapp.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
-import com.nvt.moviedbapp.R
-import com.nvt.moviedbapp.adapter.TravelLocationAdapter
+import com.nvt.moviedbapp.adapter.TrendingViewPagerAdapter
 import com.nvt.moviedbapp.databinding.HomeFragmentBinding
-import com.nvt.moviedbapp.ui.model.TravelLocation
+import com.nvt.moviedbapp.repository.MainRepository
+import com.nvt.moviedbapp.repository.vmfactory.MainVMFactory
+import com.nvt.moviedbapp.viewmodel.FragmentHomeViewModel
 
 class HomeFragment : Fragment() {
 
     private lateinit var _bindingHomeF: HomeFragmentBinding
+    private lateinit var fHomeViewModel : FragmentHomeViewModel
+    private lateinit var adapterPaging : TrendingViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,14 +29,29 @@ class HomeFragment : Fragment() {
     ): View? {
         _bindingHomeF = HomeFragmentBinding.inflate(inflater, container, false)
         val viewHomeF = _bindingHomeF.root
+        val factory = MainVMFactory(MainRepository)
+        fHomeViewModel = ViewModelProvider(requireActivity(),factory)
+            .get(FragmentHomeViewModel::class.java)
 
+//        loadFakeListData()
+        getTrendingList()
         loadFakeListData()
-
         return viewHomeF
     }
 
-    private fun loadFakeListData() {
+    private fun getTrendingList() {
 
+        fHomeViewModel.checkATrendingVpager()
+        fHomeViewModel.listTrending.observe(viewLifecycleOwner) {
+            adapterPaging.setData(it)
+            Log.d("list",it.toString())
+        }
+        adapterPaging = TrendingViewPagerAdapter(requireContext(), listOf())
+        _bindingHomeF.itemViewPagerTrending.adapter = adapterPaging
+    }
+
+    private fun loadFakeListData() {
+/*
         val travelLocations: MutableList<TravelLocation> = ArrayList()
 
         val travelLocationET = TravelLocation()
@@ -91,13 +109,7 @@ class HomeFragment : Fragment() {
         travelLocationSe.location = "Taj Mahal"
         travelLocationSe.startRating = 4.8f
         travelLocations.add(travelLocationSe)
-
-        _bindingHomeF.itemViewPagerTrending.setAdapter(
-            TravelLocationAdapter(
-                requireContext(),
-                travelLocations
-            )
-        )
+ */
 
         _bindingHomeF.itemViewPagerTrending.setClipToPadding(false)
         _bindingHomeF.itemViewPagerTrending.setClipChildren(false)
@@ -106,12 +118,11 @@ class HomeFragment : Fragment() {
             ?.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER)
 
         val compositePageTransformer = CompositePageTransformer()
-        compositePageTransformer.addTransformer(MarginPageTransformer(40))
+        compositePageTransformer.addTransformer(MarginPageTransformer(20))
         compositePageTransformer.addTransformer { page, position ->
             val r = 1 - Math.abs(position)
             page.scaleY = 0.90f + r * 0.04f
         }
-
         _bindingHomeF.itemViewPagerTrending.setPageTransformer(compositePageTransformer)
     }
 

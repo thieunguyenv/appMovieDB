@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.nvt.moviedbapp.databinding.ActivityMainBinding
-import com.nvt.moviedbapp.ui.HomeFragment
+import com.nvt.moviedbapp.ui.fragment.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {

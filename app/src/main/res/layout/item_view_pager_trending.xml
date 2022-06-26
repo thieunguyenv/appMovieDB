@@ -14,7 +14,8 @@
         <com.flaviofaria.kenburnsview.KenBurnsView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/img_view_pager"/>
+            android:id="@+id/img_view_pager"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -69,7 +70,8 @@
             android:textColor="#FFFFFF"
             android:textSize="@dimen/txt_size_19sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/padding_5dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

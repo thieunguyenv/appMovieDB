@@ -13,17 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginBottom="@dimen/margin_top_bottom_5dp"
-            android:paddingStart="40dp"
+            android:paddingStart="0dp"
             android:paddingEnd="40dp">
         </androidx.viewpager2.widget.ViewPager2>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_group_list_mv"
+        android:id="@+id/group_mv_with_genre_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
-
-
+        android:layout_height="match_parent"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
