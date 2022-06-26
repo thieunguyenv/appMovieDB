@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_2dp">2dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_top_bottom_2dp">2dp</dimen>
+    <dimen name="margin_left_right_2dp">2dp</dimen>
+
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_top_bottom_5dp">5dp</dimen>
+    <dimen name="margin_left_right_5dp">5dp</dimen>
+
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="padding_2dp">2dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+
+
+
+    <dimen name="txt_size_15sp">15sp</dimen>
+    <dimen name="txt_size_18sp">18sp</dimen>
+    <dimen name="txt_size_19sp">19sp</dimen>
+    <dimen name="txt_size_20sp">20sp</dimen>
+    
+    <dimen name="margin_start_20dp">20dp</dimen>
+
+    <dimen name="corer_radius_20dp">20dp</dimen>
+    <dimen name="elevation_5dp">5dp</dimen>
+
+</resources>

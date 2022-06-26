@@ -1,9 +1,9 @@
-package com.nvt.moviedbapp.ui.model
+package com.nvt.moviedbapp.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class AllListMovieDetail(
+class GenreMvModelDetail(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")
