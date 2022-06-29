@@ -9,7 +9,7 @@
     android:layout_margin="@dimen/margin_5dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -18,11 +18,16 @@
             android:layout_width="130dp"
             android:layout_height="150dp"
             android:scaleType="fitXY"/>
+
         <TextView
             android:id="@+id/txt_nam_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_action_mv">
+            android:layout_below="@+id/img_action_mv"
+            android:gravity="center"
+            android:maxLength="16"
+            android:layout_centerInParent="true"
+            android:text="Doctor Strange I">
         </TextView>
     </RelativeLayout>
 

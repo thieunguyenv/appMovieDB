@@ -1,4 +1,4 @@
-package com.nvt.moviedbapp.viewmodel
+package com.nvt.moviedbapp.ui.fragment.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

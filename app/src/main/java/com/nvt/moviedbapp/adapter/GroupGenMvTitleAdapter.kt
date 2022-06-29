@@ -13,8 +13,6 @@ class GroupGenMvTitleAdapter(val context: Context,private var
     listMovieGroup: HashMap<String, List<MovieModelDetail>> = HashMap()
 ) : RecyclerView.Adapter<GroupGenMvTitleAdapter.MyViewHolder>() {
 
-    private lateinit var groupMvByGenIDAdapter : GroupMvByGenIDAdapter
-
     fun setData(listMoviesGroup : HashMap<String,List<MovieModelDetail>>){
         this.listMovieGroup = listMoviesGroup
         notifyDataSetChanged()

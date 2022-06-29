@@ -17,7 +17,7 @@ import com.nvt.moviedbapp.databinding.HomeFragmentBinding
 import com.nvt.moviedbapp.model.MovieModelDetail
 import com.nvt.moviedbapp.repository.MainRepository
 import com.nvt.moviedbapp.repository.vmfactory.MainVMFactory
-import com.nvt.moviedbapp.viewmodel.FragmentHomeViewModel
+import com.nvt.moviedbapp.ui.fragment.viewmodel.FragmentHomeViewModel
 
 
 class HomeFragment : Fragment() {

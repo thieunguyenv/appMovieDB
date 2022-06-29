@@ -10,8 +10,6 @@ import com.nvt.moviedbapp.model.MovieModelDetail
 
 class GroupMvByGenIDAdapter : RecyclerView.Adapter<GroupMvByGenIDAdapter.MyViewHolders> {
 
-
-
     private lateinit var mvByGenresID: List<MovieModelDetail>
     private lateinit var context: Context
 
